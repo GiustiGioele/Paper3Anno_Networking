@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/_test/test_mionome/test_TagGame.unity
+    path: Assets/_test/test_mionome/TagGame_gameplay.unity
     guid: d54fb9fb8cbfd4c668db7d4749bb6c88
+  - enabled: 1
+    path: Assets/_test/test_TagGame/TagGame_.unity
+    guid: 308f7552fe5856440a6bbbb0ed3b0211
   m_configObjects: {}

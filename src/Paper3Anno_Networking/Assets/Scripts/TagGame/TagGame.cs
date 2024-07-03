@@ -3,8 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
-using Random = Unity.Mathematics.Random;
-
+using Random = UnityEngine.Random;
 
 public class TagGame : NetworkBehaviour
 {

@@ -9,7 +9,6 @@ public class PlayerMovement : NetworkBehaviour
         if (IsOwner) {
             return;
         }
-
         {
             float moveHorizontal = Input.GetAxis("Horizontal");
             float moveVertical = Input.GetAxis("Vertical");
