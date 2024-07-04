@@ -1,6 +1,6 @@
 using Unity.Netcode;
 using UnityEngine;
-public class PlayerMovement : NetworkBehaviour
+public class PlayerNetwork : NetworkBehaviour
 {
     public float speed;
 
