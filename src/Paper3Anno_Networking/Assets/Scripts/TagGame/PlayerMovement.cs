@@ -6,7 +6,7 @@ public class PlayerNetwork : NetworkBehaviour
 
     private void Update()
     {
-        if (IsOwner) {
+        if (!IsOwner) {
             return;
         }
         {
