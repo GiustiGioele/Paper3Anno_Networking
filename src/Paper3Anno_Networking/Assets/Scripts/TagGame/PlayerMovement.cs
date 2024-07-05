@@ -6,6 +6,7 @@ public class PlayerNetwork : NetworkBehaviour
     public float movementSpeed;
     public float rotationSpeed;
 
+
     private void Update()
     {
         if (!IsOwner) {
@@ -14,6 +15,7 @@ public class PlayerNetwork : NetworkBehaviour
 
         HandleMovement();
     }
+
 
     private void HandleMovement()
     {
