@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2570997306
+  GlobalObjectIdHash: 2399553608
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
@@ -114,8 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 8739048657243408512, guid: 2f971f301ccaaed42874e24b8986dc55,
     type: 3}
-  projectilePoint: {fileID: 5457485403790643195}
-  speed: 500
+  firePoint: {fileID: 5457485403790643195}
 --- !u!1 &5853482589714896271
 GameObject:
   m_ObjectHideFlags: 0

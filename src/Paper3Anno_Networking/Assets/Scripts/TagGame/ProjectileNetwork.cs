@@ -6,19 +6,17 @@ using UnityEngine;
 public class ProjectileNetwork : MonoBehaviour
 {
     public GameObject projectile;
-    public Transform projectilePoint;
-    public float speed;
+    public Transform firePoint;
+
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            HandleShooting();
+        if (Input.GetButtonDown("Fire1")) {
+            Shooting();
         }
     }
 
-    private void HandleShooting()
+    private void Shooting()
     {
-        Instantiate(projectile, projectilePoint.position, projectilePoint.rotation);
-        projectile.GetComponent<Rigidbody>().velocity = projectilePoint.forward * speed;
+        GameObject clone = Instantiate(projectile, firePoint.position, firePoint.rotation);
     }
-
 }
