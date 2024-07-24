@@ -15,7 +15,10 @@ namespace FPSshooter
             _playerMovementsActions = _playerInput.PlayerMovements;
             _motor = GetComponent<PlayerMotor>();
             _look = GetComponent<PlayerLook>();
+
             _playerMovementsActions.Jump.performed += ctx => _motor.Jump();
+            _playerMovementsActions.Crouch.performed += ctx => _motor.Crouch();
+            _playerMovementsActions.Sprint.performed += ctx => _motor.Sprint();
         }
 
         private void FixedUpdate() =>
