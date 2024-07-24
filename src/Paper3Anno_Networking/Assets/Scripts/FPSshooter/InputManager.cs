@@ -17,6 +17,7 @@ namespace FPSshooter
         _playerInput = new PlayerInput();
         _playerMovementsActions = _playerInput.PlayerMovements;
         _motor = GetComponent<PlayerMotor>();
+        _playerMovementsActions.Jump.performed += ctx => _motor.Jump();
     }
 
     private void FixedUpdate()
