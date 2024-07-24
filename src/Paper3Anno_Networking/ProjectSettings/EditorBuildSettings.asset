@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_test/test_TagGame/TagGame_.unity
     guid: 308f7552fe5856440a6bbbb0ed3b0211
+  - enabled: 1
+    path: Assets/FPS_ShooterMinigame/FpsShooter.unity
+    guid: 042fd560501a8234cba34dbad7528322
   m_configObjects: {}
