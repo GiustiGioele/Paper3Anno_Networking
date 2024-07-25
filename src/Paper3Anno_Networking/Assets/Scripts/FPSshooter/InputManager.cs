@@ -5,7 +5,7 @@ namespace FPSshooter
     public class InputManager : MonoBehaviour
     {
         private PlayerInput _playerInput;
-        private PlayerInput.PlayerMovementsActions _playerMovementsActions;
+        internal PlayerInput.PlayerMovementsActions _playerMovementsActions;
         private PlayerMotor _motor;
         private PlayerLook _look;
 
