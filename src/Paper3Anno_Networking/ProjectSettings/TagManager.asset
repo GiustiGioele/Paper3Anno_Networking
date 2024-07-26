@@ -5,11 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - Bullet
+  - Enemy
+  - Health
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Interactable
   - Water
   - UI
   - 

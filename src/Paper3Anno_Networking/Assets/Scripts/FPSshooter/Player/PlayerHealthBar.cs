@@ -20,19 +20,13 @@ public class PlayerHealthBar : MonoBehaviour
         _currentHealth = maxHealth;
     }
 
-    private void Update()
+    public void Update()
     {
         _currentHealth = Mathf.Clamp(_currentHealth, 0, maxHealth);
         UpdateBar();
-        if (Input.GetKeyDown(KeyCode.Q)) {
-            TakeDamage(Random.Range(5,10));
-            Debug.Log("take damage " + _currentHealth );
-        }
-
-        if (Input.GetKeyDown(KeyCode.E)) {
-            ResetHealth(Random.Range(5,10));
-            Debug.Log("reset health " + _currentHealth );
-        }
+        float damage = 0;
+        TakeDamage(damage);
+        // ResetHealth(healAmount);
     }
 
     public void UpdateBar()
@@ -63,6 +57,7 @@ public class PlayerHealthBar : MonoBehaviour
     public void TakeDamage(float damage)
     {
         _currentHealth -= damage;
+        Debug.Log("la tua vita è " + _currentHealth );
         _lerpTimer = 0f;
     }
 
