@@ -35,7 +35,7 @@ public class PlayerInteract : MonoBehaviour
                 if (_inputManager._playerMovementsActions.Interact.triggered) {
                     float damage = interactable.interactableDamage;
                     _healthBar.TakeDamage(damage);
-                    interactable.BaseInteract();
+                    interactable.InvokeDamage();
                     Debug.Log(message: "OnDamage");
                 }
             }

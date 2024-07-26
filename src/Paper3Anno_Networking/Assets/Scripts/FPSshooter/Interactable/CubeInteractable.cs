@@ -7,8 +7,5 @@ public class CubeInteractable : Interactable
 {
     public override void Interact()
     {
-        Debug.Log("interacted with :" + gameObject.name);
-
     }
-
 }

@@ -12,7 +12,6 @@ public abstract class Interactable : MonoBehaviour
      public void BaseInteract()
      {
          Interact();
-         InvokeDamage();
      }
     public abstract void Interact();
 

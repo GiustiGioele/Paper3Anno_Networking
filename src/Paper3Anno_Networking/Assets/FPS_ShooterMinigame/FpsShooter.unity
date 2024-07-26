@@ -287,25 +287,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &581871047 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2464285977084361670, guid: 0f63f4b97c435de4d8bf858e51844dba,
-    type: 3}
-  m_PrefabInstance: {fileID: 5277727465361108859}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &581871048
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 581871047}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 764ed1dd609fd344a928ad449e2c2640, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  distance: 15
 --- !u!1 &634915498
 GameObject:
   m_ObjectHideFlags: 0
@@ -439,6 +420,7 @@ GameObject:
   - component: {fileID: 659424250}
   - component: {fileID: 659424249}
   - component: {fileID: 659424248}
+  - component: {fileID: 659424252}
   m_Layer: 3
   m_Name: Cube (6)
   m_TagString: Health
@@ -532,6 +514,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &659424252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 659424247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3f37e8bf6fc5e3449b32de7296e6c7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prompt: 
+  interactableDamage: 0
 --- !u!1 &733022777
 GameObject:
   m_ObjectHideFlags: 0
@@ -2012,7 +2008,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prompt: Use cube
-  cube: {fileID: 1619719754}
+  interactableDamage: 25
 --- !u!1 &1811228950
 GameObject:
   m_ObjectHideFlags: 0
@@ -2592,9 +2588,10 @@ GameObject:
   - component: {fileID: 2040609281}
   - component: {fileID: 2040609280}
   - component: {fileID: 2040609279}
-  m_Layer: 3
+  - component: {fileID: 2040609283}
+  m_Layer: 0
   m_Name: Cube (3)
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2685,6 +2682,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2040609283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2040609278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03531d3ae5b83ac469d7533b4e382c85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prompt: Enemy
+  damage: 5
+  _healthBar: {fileID: 0}
+  enemyDamage: 0
 --- !u!1001 &5277727465361108859
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2781,11 +2794,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2464285977084361670, guid: 0f63f4b97c435de4d8bf858e51844dba,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 581871048}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f63f4b97c435de4d8bf858e51844dba, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
