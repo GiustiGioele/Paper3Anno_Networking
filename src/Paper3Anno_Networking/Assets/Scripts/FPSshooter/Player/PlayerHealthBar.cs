@@ -22,11 +22,13 @@ public class PlayerHealthBar : MonoBehaviour
     public float duration;
     public float fadeSpeed;
     private float _durationTimer;
+    private Color _aplhaColor;
 
     private void Start()
     {
         _currentHealth = maxHealth;
-        overlay.color = new Color(overlay.color.r, overlay.color.g, overlay.color.b, 0);
+        // overlay.color = new Color(overlay.color.r, overlay.color.g, overlay.color.b, 0f);
+        _aplhaColor = overlay.color;
     }
 
     public void Update()
@@ -36,15 +38,15 @@ public class PlayerHealthBar : MonoBehaviour
         float damage = 0;
         TakeDamage(damage);
         // ResetHealth(healAmount);
-        if (overlay.color.a > 0) {
-            _durationTimer += Time.deltaTime;
-            if (_durationTimer > duration) {
-                //fade image
-                float tempAlpha = overlay.color.a;
-                tempAlpha -= Time.deltaTime * fadeSpeed;
-                overlay.color = new Color(overlay.color.r, overlay.color.g, overlay.color.b, tempAlpha);
-            }
-        }
+        // if (overlay.color.a > 0) {
+        //     _durationTimer += Time.deltaTime;
+        //     if (_durationTimer > duration) {
+        //         //fade image
+        //         float tempAlpha = overlay.color.a;
+        //         tempAlpha -= Time.deltaTime * fadeSpeed;
+        //         overlay.color = new Color(overlay.color.r, overlay.color.g, overlay.color.b, tempAlpha);
+        //     }
+        // }
     }
 
     public void UpdateBar()
@@ -70,15 +72,21 @@ public class PlayerHealthBar : MonoBehaviour
             percentComplete = percentComplete * percentComplete;
             frontBar.fillAmount = Mathf.Lerp(fillF, backBar.fillAmount, percentComplete);
         }
+        //healhText.text = health + "/" + maxHealth;
     }
 
     public void TakeDamage(float damage)
     {
         _currentHealth -= damage;
-        Debug.Log("la tua vita è " + _currentHealth );
+        Debug.Log("your current life is " + _currentHealth );
         _lerpTimer = 0f;
-        _durationTimer = 0;
-        overlay.color = new Color(overlay.color.r, overlay.color.g, overlay.color.b, 1);
+        if (_currentHealth < maxHealth) {
+            _aplhaColor.a += .1f;
+            overlay.color = _aplhaColor;
+        }
+
+        // _durationTimer = 0;
+        // overlay.color = new Color(overlay.color.r, overlay.color.g, overlay.color.b, 1f);
     }
 
     public void ResetHealth(float healAmount)
