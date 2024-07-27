@@ -95,7 +95,7 @@ namespace FPSshooter
                 if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, distanceRange)) {
                     Debug.DrawRay(cam.transform.position,cam.transform.forward, Color.green);
                     Debug.Log(hit.collider.name);
-                    Target target = hit.transform.GetComponent<Target>();
+                    Target target = hit.collider.gameObject.GetComponent<Target>();
                     if (target != null) {
                         target.TargetTakeDamage(gunDamage);
                         Debug.Log("damage " + gunDamage);
