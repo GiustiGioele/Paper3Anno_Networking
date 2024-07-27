@@ -8,16 +8,25 @@ using Random = UnityEngine.Random;
 
 public class PlayerHealthBar : MonoBehaviour
 {
+
+    private float _lerpTimer;
+    private float _currentHealth;
+    [Header("Health Bar")]
     [SerializeField] private float maxHealth;
     [SerializeField] private  float barSpeed;
     [SerializeField] private Image frontBar;
     [SerializeField] private Image backBar;
 
-    private float _currentHealth;
-    private float _lerpTimer;
+    [Header("Damage Overlay")]
+    public Image overlay;
+    public float duration;
+    public float fadeSpeed;
+    private float _durationTimer;
+
     private void Start()
     {
         _currentHealth = maxHealth;
+        overlay.color = new Color(overlay.color.r, overlay.color.g, overlay.color.b, 0);
     }
 
     public void Update()
@@ -27,6 +36,15 @@ public class PlayerHealthBar : MonoBehaviour
         float damage = 0;
         TakeDamage(damage);
         // ResetHealth(healAmount);
+        if (overlay.color.a > 0) {
+            _durationTimer += Time.deltaTime;
+            if (_durationTimer > duration) {
+                //fade image
+                float tempAlpha = overlay.color.a;
+                tempAlpha -= Time.deltaTime * fadeSpeed;
+                overlay.color = new Color(overlay.color.r, overlay.color.g, overlay.color.b, tempAlpha);
+            }
+        }
     }
 
     public void UpdateBar()
@@ -59,6 +77,8 @@ public class PlayerHealthBar : MonoBehaviour
         _currentHealth -= damage;
         Debug.Log("la tua vita è " + _currentHealth );
         _lerpTimer = 0f;
+        _durationTimer = 0;
+        overlay.color = new Color(overlay.color.r, overlay.color.g, overlay.color.b, 1);
     }
 
     public void ResetHealth(float healAmount)

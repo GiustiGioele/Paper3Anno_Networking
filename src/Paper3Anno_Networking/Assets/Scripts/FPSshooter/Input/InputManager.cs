@@ -19,6 +19,7 @@ namespace FPSshooter
             _playerMovementsActions.Jump.performed += ctx => _motor.Jump();
             _playerMovementsActions.Crouch.performed += ctx => _motor.Crouch();
             _playerMovementsActions.Sprint.performed += ctx => _motor.Sprint();
+            _playerMovementsActions.Shooting.performed += ctx => _motor.Shooting();
         }
 
         private void FixedUpdate() =>

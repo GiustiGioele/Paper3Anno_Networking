@@ -145,6 +145,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   jumpHeight: 1.5
+  gunDamage: 25
+  distanceRange: 10
+  cam: {fileID: 1796029903876874751}
 --- !u!114 &6661107079584266766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,6 +255,9 @@ MonoBehaviour:
   barSpeed: 0
   frontBar: {fileID: 0}
   backBar: {fileID: 0}
+  overlay: {fileID: 0}
+  duration: 0
+  fadeSpeed: 0
 --- !u!1 &2531888255202333720
 GameObject:
   m_ObjectHideFlags: 0

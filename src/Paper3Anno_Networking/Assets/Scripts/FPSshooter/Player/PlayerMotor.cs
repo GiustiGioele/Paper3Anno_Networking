@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace FPSshooter
 {
@@ -16,6 +17,10 @@ namespace FPSshooter
         private float _gravity = -9.8f;
         public float speed;
         public float jumpHeight;
+
+        public float gunDamage;
+        public float distanceRange;
+        public Camera cam;
 
         private void Start() => _controller = GetComponent<CharacterController>();
 
@@ -48,7 +53,7 @@ namespace FPSshooter
             moveDirection.z = input.y;
             _controller.Move(transform.TransformDirection(moveDirection.x, 0, moveDirection.z) *
                              (speed * Time.deltaTime));
-            Debug.Log("current speed is " + speed);
+            // Debug.Log("current speed is " + speed);
             _playerVelocity.y += _gravity * Time.deltaTime;
             if (_isGrouned && _playerVelocity.y < 0) {
                 _playerVelocity.y = -2;
@@ -77,11 +82,25 @@ namespace FPSshooter
             _sprinting = !_sprinting;
             if (_sprinting) {
                 speed = 8f;
-                Debug.Log("current speed is " + speed);
+                // Debug.Log("current speed is " + speed);
             }
             else {
                 speed = 5f;
             }
+        }
+
+        public void Shooting()
+        {
+            RaycastHit hit;
+                if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, distanceRange)) {
+                    Debug.DrawRay(cam.transform.position,cam.transform.forward, Color.green);
+                    Debug.Log(hit.collider.name);
+                    Target target = hit.transform.GetComponent<Target>();
+                    if (target != null) {
+                        target.TargetTakeDamage(gunDamage);
+                        Debug.Log("damage " + gunDamage);
+                    }
+                }
         }
     }
 }
