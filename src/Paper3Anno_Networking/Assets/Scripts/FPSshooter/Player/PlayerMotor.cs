@@ -25,7 +25,7 @@ namespace FPSshooter
         public Camera cam;
         public ParticleSystem muzzleFlash;
         public ParticleSystem impactEffect;
-
+        public float impactForce;
         private void Start() => _controller = GetComponent<CharacterController>();
 
         private void Update()
@@ -104,6 +104,10 @@ namespace FPSshooter
                     if (target != null) {
                         target.TargetTakeDamage(gunDamage);
                         Debug.Log("damage " + gunDamage);
+                    }
+
+                    if (hit.rigidbody != null) {
+                        hit.rigidbody.AddForce(-hit.normal * impactForce);
                     }
                     Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
                 }
