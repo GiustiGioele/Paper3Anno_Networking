@@ -1,4 +1,5 @@
 using System;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -18,9 +19,12 @@ namespace FPSshooter
         public float speed;
         public float jumpHeight;
 
+        [Header("Gun")]
         public float gunDamage;
         public float distanceRange;
         public Camera cam;
+        public ParticleSystem muzzleFlash;
+        public ParticleSystem impactEffect;
 
         private void Start() => _controller = GetComponent<CharacterController>();
 
@@ -91,6 +95,7 @@ namespace FPSshooter
 
         public void Shooting()
         {
+            muzzleFlash.Play();
             RaycastHit hit;
                 if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, distanceRange)) {
                     Debug.DrawRay(cam.transform.position,cam.transform.forward, Color.green);
@@ -100,6 +105,7 @@ namespace FPSshooter
                         target.TargetTakeDamage(gunDamage);
                         Debug.Log("damage " + gunDamage);
                     }
+                    Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
                 }
         }
     }
