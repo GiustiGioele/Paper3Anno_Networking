@@ -1,11 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using FPShooter;
 using UnityEngine;
 
-public class CubeInteractable : Interactable
+namespace FPShooter
 {
-    public override void Interact()
+    public class CubeInteractable : Interactable
     {
+        public override void Interact()
+        {
+        }
     }
 }
+

@@ -6,7 +6,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-public class PlayerHealthBar : MonoBehaviour
+namespace FPShooter
+{
+    public class PlayerHealthBar : MonoBehaviour
 {
 
     private float _lerpTimer;
@@ -95,3 +97,5 @@ public class PlayerHealthBar : MonoBehaviour
         _lerpTimer = 0f;
     }
 }
+}
+

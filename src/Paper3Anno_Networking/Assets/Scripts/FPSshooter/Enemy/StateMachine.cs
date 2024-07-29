@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace FPSshooter
+namespace FPShooter
 {
     public class StateMachine : MonoBehaviour
     {

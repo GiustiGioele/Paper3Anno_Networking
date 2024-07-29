@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerUI : MonoBehaviour
+namespace FPShooter
 {
-    [SerializeField] private Text promptMessageText;
-
-    public void UpdateText(string promptMessage)
+    public class PlayerUI : MonoBehaviour
     {
-        promptMessageText.text =  promptMessage;
+        [SerializeField] private Text promptMessageText;
+
+        public void UpdateText(string promptMessage)
+        {
+            promptMessageText.text =  promptMessage;
+        }
     }
 }
+

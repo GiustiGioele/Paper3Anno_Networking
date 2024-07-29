@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace FPSshooter
+namespace FPShooter
 {
     public class Enemy : MonoBehaviour
     {

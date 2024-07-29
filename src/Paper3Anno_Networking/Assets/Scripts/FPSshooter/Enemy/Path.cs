@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace FPSshooter
+namespace FPShooter
 {
     public class Path : MonoBehaviour
     {

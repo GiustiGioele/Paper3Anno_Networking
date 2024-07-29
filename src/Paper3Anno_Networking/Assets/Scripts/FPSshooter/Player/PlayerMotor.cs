@@ -3,7 +3,7 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace FPSshooter
+namespace FPShooter
 {
     public class PlayerMotor : MonoBehaviour
     {
@@ -113,4 +113,5 @@ namespace FPSshooter
                 }
         }
     }
+
 }

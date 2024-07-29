@@ -1,5 +1,5 @@
 
-namespace FPSshooter
+namespace FPShooter
 {
     public abstract class BaseState
     {

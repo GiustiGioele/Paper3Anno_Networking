@@ -2,20 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Target : MonoBehaviour
+namespace FPShooter
 {
-    public float targetHealth;
-
-    public void TargetTakeDamage(float amount)
+    public abstract class Target : MonoBehaviour
     {
-        targetHealth -= amount;
-        if (targetHealth <= 0) {
-            TargetDie();
+        private float _targetHealth;
+        protected float TargetHealth
+        {
+            get => _targetHealth;
+            set => _targetHealth = value;
         }
-    }
 
-    public void TargetDie()
-    {
-        Destroy(gameObject);
+        public abstract void TargetTakeDamage(float amount);
+        public abstract void TargetDie();
     }
 }
+

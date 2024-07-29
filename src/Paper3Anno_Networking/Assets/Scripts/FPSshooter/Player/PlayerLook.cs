@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace FPSshooter
+namespace FPShooter
 {
     public class PlayerLook : MonoBehaviour
     {
