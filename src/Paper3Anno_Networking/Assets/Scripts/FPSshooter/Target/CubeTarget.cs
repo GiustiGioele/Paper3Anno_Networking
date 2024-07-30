@@ -7,10 +7,10 @@ namespace FPShooter
 {
     public class TargetCube : Target
     {
-        public override void TargetTakeDamage(float amount)
+        public override void TargetTakeDamage(int amount)
         {
-            TargetHealth -= amount;
-            if (TargetHealth <= 0) {
+            targetHealth -= amount;
+            if (targetHealth <= 0) {
                 TargetDie();
             }
         }

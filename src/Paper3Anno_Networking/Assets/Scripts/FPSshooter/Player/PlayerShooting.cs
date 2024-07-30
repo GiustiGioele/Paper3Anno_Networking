@@ -7,7 +7,7 @@ namespace FPShooter
     public class PlayerShooting : MonoBehaviour
     {
         [Header("Gun")]
-        public float gunDamage;
+        public int gunDamage;
         public float distanceRange;
         public Camera cam;
         public ParticleSystem muzzleFlash;
