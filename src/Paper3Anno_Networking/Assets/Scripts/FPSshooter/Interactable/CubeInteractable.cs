@@ -8,8 +8,10 @@ namespace FPShooter
 {
     public class CubeInteractable : Interactable
     {
-        public override void Interact()
+        protected override void Interact()
         {
+            Debug.Log("interacted with : " + promptMessage);
+            Destroy(this);
         }
     }
 }
