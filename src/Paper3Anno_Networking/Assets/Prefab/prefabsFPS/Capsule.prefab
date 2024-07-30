@@ -20,6 +20,8 @@ GameObject:
   - component: {fileID: 9075712086900706961}
   - component: {fileID: 6504510207225174748}
   - component: {fileID: 9187856736101170206}
+  - component: {fileID: 1213969615273004233}
+  - component: {fileID: 1873239903928493553}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -146,9 +148,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   jumpHeight: 1.5
-  gunDamage: 25
-  distanceRange: 10
-  cam: {fileID: 1796029903876874751}
 --- !u!114 &6661107079584266766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,13 +251,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44dda5e068ca3a84ea7a07716d8840f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
+  maxHealthBar: 0
   barSpeed: 0
   frontBar: {fileID: 0}
   backBar: {fileID: 0}
-  overlay: {fileID: 0}
-  duration: 0
-  fadeSpeed: 0
+--- !u!114 &1213969615273004233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2464285977084361670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66312bd41d5d2fd4bb3f6faf421be9d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1
+--- !u!114 &1873239903928493553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2464285977084361670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53fd0a726b419704bb0403eaf07c968f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunDamage: 15
+  distanceRange: 5
+  cam: {fileID: 1796029903876874751}
+  muzzleFlash: {fileID: 0}
+  impactEffect: {fileID: 0}
+  impactForce: 60
 --- !u!1 &2531888255202333720
 GameObject:
   m_ObjectHideFlags: 0

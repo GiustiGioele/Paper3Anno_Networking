@@ -9,8 +9,8 @@ namespace FPShooter
     public abstract class Interactable : MonoBehaviour
     {
         public string prompt;
-        public event Action<float> OnDamage;
-        public float interactableDamage;
+        public event Action<int> OnDamage;
+        public int interactableDamage;
         public void BaseInteract()
         {
             Interact();

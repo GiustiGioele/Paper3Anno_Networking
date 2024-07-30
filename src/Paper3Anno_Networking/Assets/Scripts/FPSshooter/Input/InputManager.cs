@@ -8,6 +8,7 @@ namespace FPShooter
         internal PlayerInput.PlayerMovementsActions _playerMovementsActions;
         private PlayerMotor _motor;
         private PlayerLook _look;
+        private PlayerShooting _shooting;
 
         private void Awake()
         {
@@ -15,11 +16,12 @@ namespace FPShooter
             _playerMovementsActions = _playerInput.PlayerMovements;
             _motor = GetComponent<PlayerMotor>();
             _look = GetComponent<PlayerLook>();
+            _shooting = GetComponent<PlayerShooting>();
 
             _playerMovementsActions.Jump.performed += ctx => _motor.Jump();
             _playerMovementsActions.Crouch.performed += ctx => _motor.Crouch();
             _playerMovementsActions.Sprint.performed += ctx => _motor.Sprint();
-            _playerMovementsActions.Shooting.performed += ctx => _motor.Shooting();
+            _playerMovementsActions.Shooting.performed += ctx => _shooting.Shooting();
         }
 
         private void FixedUpdate() =>
