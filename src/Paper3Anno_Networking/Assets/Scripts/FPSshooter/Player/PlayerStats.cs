@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace FPShooter
@@ -5,15 +6,27 @@ namespace FPShooter
     public class PlayerStats : MonoBehaviour
     {
         [SerializeField] private int maxHealth;
-        private int _currentHealth;
-        private void Start() => maxHealth = _currentHealth;
+        [SerializeField] private int currentHealth;
+
+
+        private void Start()
+        {
+            // Interactable interactable = FindObjectOfType<Interactable>();
+            // if (interactable != null) {
+            //     interactable.OnDamage += TakeDamage;
+            //     Debug.Log(" PlayerStats is subscribed to OnDamage");
+            // }
+            currentHealth = maxHealth;
+        }
+
 
         public void TakeDamage(int damage)
         {
-            _currentHealth -= damage;
-            Debug.Log("your current life is " + _currentHealth);
+            currentHealth -= damage;
+            Debug.Log($"Player took {damage} damage, current health is :" + currentHealth);
         }
 
-        public void ResetHealth(int heal) => _currentHealth += heal;
+
+        public void ResetHealth(int heal) => currentHealth += heal;
     }
 }

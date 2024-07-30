@@ -9,13 +9,14 @@ namespace FPShooter
         private PlayerUI _playerUI;
         private InputManager _inputManager;
         private PlayerHealthBar _healthBar;
-
+        private PlayerStats _playerStats;
         private void Awake()
         {
             _cam = GetComponent<PlayerLook>().cam;
             _playerUI = GetComponent<PlayerUI>();
             _inputManager = GetComponent<InputManager>();
             _healthBar = GetComponent<PlayerHealthBar>();
+            _playerStats = GetComponent<PlayerStats>();
         }
 
         private void Update() => PlayerInteractRay();
@@ -34,9 +35,12 @@ namespace FPShooter
                     _playerUI.UpdateText(interactable.promptMessage);
                     if (_inputManager._playerMovementsActions.Interact.triggered) {
                         int damage = interactable.interactableDamage;
-                        _healthBar.TakeDamageBar(damage);
+                        interactable.OnDamage += _playerStats.TakeDamage;
+                        interactable.OnDamage += _healthBar.TakeDamageBar;
                         interactable.InvokeDamage();
                         Debug.Log("OnDamage");
+                        interactable.OnDamage -= _playerStats.TakeDamage;
+                        interactable.OnDamage -= _healthBar.TakeDamageBar;
                     }
                 }
             }

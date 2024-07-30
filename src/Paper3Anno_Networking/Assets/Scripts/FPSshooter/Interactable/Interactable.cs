@@ -22,6 +22,7 @@ namespace FPShooter
 
         public void InvokeDamage()
         {
+            Debug.Log($"Invoking damage: {interactableDamage}");
             OnDamage?.Invoke(interactableDamage);
         }
 
