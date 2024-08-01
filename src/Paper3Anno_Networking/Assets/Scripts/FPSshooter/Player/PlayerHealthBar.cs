@@ -1,4 +1,5 @@
 using System;
+using FPSshooter;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,14 +18,24 @@ namespace FPShooter
 
         private void Start()
         {
-            Interactable interactable = FindObjectOfType<Interactable>();
-            if (interactable != null)
-            {
-                interactable.OnDamage += TakeDamageBar;
-                Debug.Log("PlayerHealthBar is subscribed to OnDamage");
-            }
+            // Interactable interactable = FindObjectOfType<Interactable>();
+            // if (interactable != null)
+            // {
+            //     interactable.OnDamage += TakeDamageBar;
+            //     Debug.Log("PlayerHealthBar is subscribed to OnDamage");
+            // }
             _currentHealthBar = maxHealthBar;
         }
+
+        // private void OnEnable()
+        // {
+        //     EventBus.Subscribe<PlayerTakesDamageEvent>(TakeDamageBar);
+        // }
+        //
+        // private void OnDisable()
+        // {
+        //     EventBus.Unsubscribe<PlayerTakesDamageEvent>(TakeDamageBar);
+        // }
 
         private void Update()
         {
@@ -61,19 +72,18 @@ namespace FPShooter
             }
         }
 
-        public void TakeDamageBar(int damage)
+        public void TakeDamageBar(PlayerTakesDamageEvent e)
         {
             if (_currentHealthBar <= 0)
             {
                 Debug.Log("Player is already at 0 health. No further damage can be taken.");
                 return;
             }
-            _currentHealthBar -= damage;
+            _currentHealthBar -= e._damageAmount;
             _currentHealthBar = Mathf.Clamp(_currentHealthBar, 0, maxHealthBar);  // Clamp subito dopo aver ridotto
-            Debug.Log($"Player HealthBar took {damage} damage, current life is: {_currentHealthBar}");
+            Debug.Log($"Player HealthBar took {e._damageAmount} damage, current life is: {_currentHealthBar}");
             _lerpTimer = 0f;  // Reset del timer
         }
-
         public void ResetHealthBar(int healAmount)
         {
             _currentHealthBar += healAmount;

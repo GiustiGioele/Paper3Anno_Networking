@@ -1,3 +1,5 @@
+using System;
+using FPSshooter;
 using UnityEngine;
 
 namespace FPShooter
@@ -19,6 +21,16 @@ namespace FPShooter
             _playerStats = GetComponent<PlayerStats>();
         }
 
+        private void OnEnable()
+        {
+            EventBus.Subscribe<PlayerTakesDamageEvent>(HandleDamageEvent);
+        }
+
+        private void OnDisable()
+        {
+            EventBus.Unsubscribe<PlayerTakesDamageEvent>(HandleDamageEvent);
+        }
+
         private void Update() => PlayerInteractRay();
 
         private void PlayerInteractRay()
@@ -34,16 +46,18 @@ namespace FPShooter
                     Interactable interactable = raycastHit.collider.GetComponent<Interactable>();
                     _playerUI.UpdateText(interactable.promptMessage);
                     if (_inputManager._playerMovementsActions.Interact.triggered) {
-                        int damage = interactable.interactableDamage;
-                        interactable.OnDamage += _playerStats.TakeDamage;
-                        interactable.OnDamage += _healthBar.TakeDamageBar;
                         interactable.InvokeDamage();
                         Debug.Log("OnDamage");
-                        interactable.OnDamage -= _playerStats.TakeDamage;
-                        interactable.OnDamage -= _healthBar.TakeDamageBar;
                     }
                 }
             }
+        }
+        private void HandleDamageEvent(PlayerTakesDamageEvent e)
+        {
+            int damage = e._damageAmount;
+            _playerStats.TakeDamage(e);
+            _healthBar.TakeDamageBar(e);
+            Debug.Log($"Handled damage event with {damage} damage");
         }
     }
 }

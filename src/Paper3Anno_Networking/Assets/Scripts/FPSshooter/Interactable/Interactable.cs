@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using FPSshooter;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -9,7 +10,6 @@ namespace FPShooter
     public abstract class Interactable : MonoBehaviour
     {
         public string promptMessage;
-        public event Action<int> OnDamage;
         public int interactableDamage;
         public void BaseInteract()
         {
@@ -23,7 +23,7 @@ namespace FPShooter
         public void InvokeDamage()
         {
             Debug.Log($"Invoking damage: {interactableDamage}");
-            OnDamage?.Invoke(interactableDamage);
+            EventBus.Publish(new PlayerTakesDamageEvent(interactableDamage));
         }
 
     }

@@ -586,7 +586,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &659424248
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -685,8 +685,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3f37e8bf6fc5e3449b32de7296e6c7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prompt: Use cube
-  interactableDamage: 0
+  promptMessage: 
+  interactableDamage: 10
 --- !u!1 &733022777
 GameObject:
   m_ObjectHideFlags: 0
@@ -707,7 +707,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &733022778
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -806,6 +806,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b953af960b488644acea57177d3a0b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetHealth: 30
 --- !u!54 &733022783
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1840,7 +1841,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1619719755
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1939,6 +1940,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b953af960b488644acea57177d3a0b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetHealth: 30
 --- !u!54 &1619719760
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2206,14 +2208,13 @@ GameObject:
   - component: {fileID: 1775121297}
   - component: {fileID: 1775121296}
   - component: {fileID: 1775121300}
-  - component: {fileID: 1775121301}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &1775121296
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2312,35 +2313,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3f37e8bf6fc5e3449b32de7296e6c7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prompt: Use cube
+  promptMessage: use cube
   interactableDamage: 10
---- !u!54 &1775121301
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1775121295}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &1811228950
 GameObject:
   m_ObjectHideFlags: 0
@@ -2929,7 +2903,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &2040609279
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3304,7 +3278,7 @@ PrefabInstance:
     - target: {fileID: 9187856736101170206, guid: 0f63f4b97c435de4d8bf858e51844dba,
         type: 3}
       propertyPath: barSpeed
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9187856736101170206, guid: 0f63f4b97c435de4d8bf858e51844dba,
         type: 3}

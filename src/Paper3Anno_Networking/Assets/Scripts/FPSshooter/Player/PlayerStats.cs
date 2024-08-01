@@ -1,4 +1,5 @@
 using System;
+using FPSshooter;
 using UnityEngine;
 
 namespace FPShooter
@@ -19,14 +20,32 @@ namespace FPShooter
             currentHealth = maxHealth;
         }
 
+        // private void OnEnable()
+        // {
+        //     EventBus.Subscribe<PlayerTakesDamageEvent>(TakeDamage);
+        // }
+        //
+        // private void OnDisable()
+        // {
+        //     EventBus.Unsubscribe<PlayerTakesDamageEvent>(TakeDamage);
+        // }
 
-        public void TakeDamage(int damage)
+
+        public void TakeDamage(PlayerTakesDamageEvent e)
         {
-            currentHealth -= damage;
-            Debug.Log($"Player took {damage} damage, current health is :" + currentHealth);
+            currentHealth -= e._damageAmount;
+            Debug.Log($"Player took {e._damageAmount} damage, current health is :" + currentHealth);
+            if (currentHealth <= 0) {
+                currentHealth = 0;
+                //PlayerDie()
+            }
         }
-
-
         public void ResetHealth(int heal) => currentHealth += heal;
+
+        // //private void PlayerDie()
+        // {
+        //     //Debug.Log("Player died")
+        //     //EventBus.Publish(new PlayerDeathEvent);
+        // }
     }
 }
