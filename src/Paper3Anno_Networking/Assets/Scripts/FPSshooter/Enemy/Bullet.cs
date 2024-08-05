@@ -14,8 +14,6 @@ namespace FPShooter
             if (hitTransform.CompareTag("Player")) {
                 Debug.Log("hit player");
                 EventBus.Publish(new PlayerTakesDamageEvent(bulletDamage));
-               // hitTransform.GetComponent<PlayerStats>().TakeDamage(e:new PlayerTakesDamageEvent(10));
-               // hitTransform.GetComponent<PlayerHealthBar>().TakeDamageBar(e:new PlayerTakesDamageEvent(10));
             }
             Destroy(gameObject);
         }

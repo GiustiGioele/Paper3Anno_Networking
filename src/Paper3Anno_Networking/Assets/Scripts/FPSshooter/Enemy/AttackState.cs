@@ -42,7 +42,7 @@ namespace FPShooter
             Transform gunBarrel = _enemy.gunBarrel;
             GameObject bullet = GameObject.Instantiate(Resources.Load("Prefab/prefabsFPS/Bullet") as GameObject,gunBarrel.transform.position, _enemy.transform.rotation);
             Vector3 shootDirection = (_enemy.Player.transform.position - gunBarrel.transform.position).normalized;
-            bullet.GetComponent<Rigidbody>().velocity = shootDirection * _enemy.speedOfBullet;
+            bullet.GetComponent<Rigidbody>().velocity = Quaternion.AngleAxis(Random.Range(-3f,3f), Vector3.up) * shootDirection * _enemy.speedOfBullet;
             Debug.Log("Shoot");
             _shotTimer = 0;
         }
