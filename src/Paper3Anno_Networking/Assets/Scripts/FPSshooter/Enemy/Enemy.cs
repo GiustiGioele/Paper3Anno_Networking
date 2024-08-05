@@ -20,7 +20,6 @@ namespace FPShooter
         [Header("Weapon Values")]
         public Transform gunBarrel;
         public float speedOfBullet;
-        public int bulletDamage;
         [Range(0.1f, 10.0f)]
         public float fireRate;
         private void Start()

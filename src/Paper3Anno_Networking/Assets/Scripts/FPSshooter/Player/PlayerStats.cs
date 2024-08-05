@@ -7,7 +7,7 @@ namespace FPShooter
     public class PlayerStats : MonoBehaviour
     {
         [SerializeField] private int maxHealth;
-        [SerializeField] private int currentHealth;
+         public int currentHealth;
 
 
         private void Start()
