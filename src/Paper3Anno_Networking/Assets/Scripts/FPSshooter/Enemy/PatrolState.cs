@@ -11,6 +11,9 @@ namespace FPShooter
         public override void Perform()
         {
             PatrolCycle();
+            if (_enemy.CanSeePlayer()) {
+                _stateMachine.ChangeState(new AttackState());
+            }
         }
         public override void Exit() { }
 

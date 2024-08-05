@@ -11,8 +11,7 @@ namespace FPShooter
         public PatrolState _patrolState;
         public void Initialise()
         {
-            _patrolState = new PatrolState();
-            ChangeState(_patrolState);
+            ChangeState(new PatrolState());
         }
         private void Update()
         {
