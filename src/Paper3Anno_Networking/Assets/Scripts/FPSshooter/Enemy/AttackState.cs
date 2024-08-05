@@ -28,11 +28,13 @@ namespace FPShooter
                     _enemy.Agent.SetDestination(_enemy.transform.position + (Random.insideUnitSphere * 5));
                     _moveTimer = 0;
                 }
+
+                _enemy.LastKnowPos = _enemy.Player.transform.position;
             }
             else {
                 _losePLayerTimer += Time.deltaTime;
                 if (_losePLayerTimer > 8) {
-                    _stateMachine.ChangeState(new PatrolState());
+                    _stateMachine.ChangeState(new SearchState());
                 }
             }
         }
@@ -47,6 +49,6 @@ namespace FPShooter
             _shotTimer = 0;
         }
 
-        public override void Exit() => throw new System.NotImplementedException();
+        public override void Exit(){}
     }
 }
