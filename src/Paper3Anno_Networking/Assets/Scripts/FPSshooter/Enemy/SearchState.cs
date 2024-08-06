@@ -8,15 +8,19 @@ namespace FPShooter
     {
         private float _searchTimer;
         private float _moveTimer;
+        private Enemy _enemy;
 
         public override void Enter()
         {
-            _enemy.Agent.SetDestination(_enemy.LastKnowPos);
+            if (!_enemy.enemyIsDead) {
+                _enemy.Agent.SetDestination(_enemy.LastKnowPos);
+            }
+
         }
 
         public override void Perform()
         {
-            if (_enemy.CanSeePlayer()) {
+            if (_enemy.CanSeePlayer() && !_enemy.enemyIsDead) {
                 _stateMachine.ChangeState(new AttackState());
                 if (_enemy.Agent.remainingDistance < _enemy.Agent.stoppingDistance) {
                     _searchTimer += Time.deltaTime;

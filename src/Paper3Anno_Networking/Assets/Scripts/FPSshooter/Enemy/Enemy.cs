@@ -1,4 +1,5 @@
 ﻿using System;
+using FPSshooter;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,6 +11,9 @@ namespace FPShooter
         private NavMeshAgent _agent;
         private Vector3 _lastKnowPos;
         public string enemyPromptMessage;
+        [SerializeField] private int maxHealth;
+        public int currentHealth;
+        public bool enemyIsDead;
         public NavMeshAgent Agent { get => _agent; }
         public GameObject Player { get => _player; }
         public Vector3 LastKnowPos { get => _lastKnowPos; set => _lastKnowPos = value; }
@@ -27,10 +31,22 @@ namespace FPShooter
         public float fireRate;
         private void Start()
         {
+            currentHealth = maxHealth;
+            enemyIsDead = false;
             _stateMachine = GetComponent<StateMachine>();
             _agent = GetComponent<NavMeshAgent>();
             _stateMachine.Initialise();
             _player = GameObject.FindWithTag("Player");
+        }
+
+        private void OnEnable()
+        {
+            EventBus.Subscribe<EnemyTakesDamageEvent>(TakeDamage);
+        }
+
+        private void OnDisable()
+        {
+            EventBus.Unsubscribe<EnemyTakesDamageEvent>(TakeDamage);
         }
 
         private void Update()
@@ -41,7 +57,7 @@ namespace FPShooter
 
         public bool CanSeePlayer()
         {
-            if (_player != null) {
+            if (_player != null && !enemyIsDead) {
                 if (Vector3.Distance(transform.position, _player.transform.position) < sightDistance) {
                     Vector3 targetDirection = _player.transform.position - transform.position - (Vector3.up * eyeHeight);
                     float angleToPlayer = Vector3.Angle(targetDirection, transform.forward);
@@ -60,6 +76,25 @@ namespace FPShooter
             }
 
             return false;
+        }
+
+        private void TakeDamage(EnemyTakesDamageEvent e)
+        {
+            currentHealth -= e._enemyDamageAmount;
+            Debug.Log($"Enemy took {e._enemyDamageAmount} damage, current health is :" + currentHealth);
+            if (currentHealth <= 0) {
+                currentHealth = 0;
+                //funzione di morte
+                EnemyDie();
+            }
+
+        }
+
+        private void EnemyDie()
+        {
+            enemyIsDead = true;
+            Destroy(gameObject);
+            Debug.Log("Enemy dead");
         }
 
     }
