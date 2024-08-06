@@ -9,6 +9,7 @@ namespace FPShooter
         private StateMachine _stateMachine;
         private NavMeshAgent _agent;
         private Vector3 _lastKnowPos;
+        public string enemyPromptMessage;
         public NavMeshAgent Agent { get => _agent; }
         public GameObject Player { get => _player; }
         public Vector3 LastKnowPos { get => _lastKnowPos; set => _lastKnowPos = value; }
