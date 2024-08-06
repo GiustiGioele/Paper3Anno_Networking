@@ -1,6 +1,7 @@
 using System;
 using FPSshooter;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace FPShooter
 {
@@ -37,7 +38,7 @@ namespace FPShooter
             Debug.Log($"Player took {e._damageAmount} damage, current health is :" + currentHealth);
             if (currentHealth <= 0) {
                 currentHealth = 0;
-                //PlayerDie()
+                PlayerDie();
             }
         }
         public void ResetHealth(int heal) => currentHealth += heal;
@@ -47,5 +48,12 @@ namespace FPShooter
         //     //Debug.Log("Player died")
         //     //EventBus.Publish(new PlayerDeathEvent);
         // }
+
+        public void PlayerDie()
+        {
+            Debug.Log("Player Died");
+            SceneManager.LoadScene("GameOver");
+
+        }
     }
 }
