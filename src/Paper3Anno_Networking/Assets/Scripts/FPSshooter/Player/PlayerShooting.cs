@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using FPSshooter;
+using Unity.Netcode;
 using UnityEngine;
 
 namespace FPShooter
 {
-    public class PlayerShooting : MonoBehaviour
+    public class PlayerShooting : NetworkBehaviour
     {
         [Header("Gun")]
         public int gunDamage;
@@ -17,14 +17,25 @@ namespace FPShooter
 
         public void Shooting()
         {
-            ShootingTarget();
+            if (!IsOwner) return;
+        ShootServerRpc();
+        }
+
+        [ServerRpc] private void ShootServerRpc(ServerRpcParams rpcParams = default)
+        {
+            ShootClientRpc();
             ShootingEnemy();
+            ShootingTarget();
+        }
+
+        [ClientRpc]
+        private void ShootClientRpc(ClientRpcParams rpcParams = default)
+        {
+            muzzleFlash.Play();
         }
 
         public void ShootingEnemy()
         {
-
-            muzzleFlash.Play();
             RaycastHit hit;
             if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, distanceRange)) {
                 Debug.DrawRay(cam.transform.position, cam.transform.forward, Color.green);
@@ -43,7 +54,6 @@ namespace FPShooter
 
         public void ShootingTarget()
         {
-            muzzleFlash.Play();
             RaycastHit hit;
             if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, distanceRange)) {
                 Debug.DrawRay(cam.transform.position,cam.transform.forward, Color.green);

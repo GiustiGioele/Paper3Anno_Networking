@@ -1,4 +1,4 @@
-﻿namespace FPSshooter
+﻿namespace FPShooter
 {
     public class PlayerTakesDamageEvent
     {

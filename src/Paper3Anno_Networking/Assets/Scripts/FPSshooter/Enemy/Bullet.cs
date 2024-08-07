@@ -1,6 +1,5 @@
 
 using System;
-using FPSshooter;
 using UnityEngine;
 
 namespace FPShooter

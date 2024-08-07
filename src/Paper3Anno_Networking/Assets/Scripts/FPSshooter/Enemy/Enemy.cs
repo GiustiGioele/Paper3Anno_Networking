@@ -1,5 +1,4 @@
 ﻿using System;
-using FPSshooter;
 using UnityEngine;
 using UnityEngine.AI;
 

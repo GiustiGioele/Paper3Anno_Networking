@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameOverManager : MonoBehaviour
+namespace FPShooter
 {
-    public void RestartGame()
+    public class GameOverManager : MonoBehaviour
     {
-        SceneManager.LoadScene("FpsShooter");
+        public void RestartGame()
+        {
+            SceneManager.LoadScene("FpsShooter");
+        }
+
+        // public void ReturnToMenu()
+        // {
+        //     UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+        // }
     }
 
-    // public void ReturnToMenu()
-    // {
-    //     UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
-    // }
 }

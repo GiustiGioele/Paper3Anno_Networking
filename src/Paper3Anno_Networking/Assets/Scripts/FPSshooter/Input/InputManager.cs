@@ -1,8 +1,9 @@
 using UnityEngine;
+using Unity.Netcode;
 
 namespace FPShooter
 {
-    public class InputManager : MonoBehaviour
+    public class InputManager : NetworkBehaviour
     {
         private PlayerInput _playerInput;
         internal PlayerInput.PlayerMovementsActions _playerMovementsActions;
@@ -24,14 +25,33 @@ namespace FPShooter
             _playerMovementsActions.Shooting.performed += ctx => _shooting.Shooting();
         }
 
-        private void FixedUpdate() =>
+        private void FixedUpdate()
+        {
+            if (!IsOwner) return;
             //tell the player to move using the value from our movement action
             _motor.ProcessMove(_playerMovementsActions.Movement.ReadValue<Vector2>());
+        }
 
-        private void LateUpdate() => _look.ProcessLook(_playerMovementsActions.Look.ReadValue<Vector2>());
+        private void LateUpdate()
+        {
+            if (!IsOwner) return;
+            _look.ProcessLook(_playerMovementsActions.Look.ReadValue<Vector2>());
+        }
 
-        private void OnEnable() => _playerMovementsActions.Enable();
+        private void OnEnable()
+        {
+            if (IsOwner)
+            {
+                _playerMovementsActions.Enable();
+            }
+        }
 
-        private void OnDisable() => _playerMovementsActions.Disable();
+        private void OnDisable()
+        {
+            if (IsOwner)
+            {
+                _playerMovementsActions.Disable();
+            }
+        }
     }
 }

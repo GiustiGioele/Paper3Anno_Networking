@@ -2,11 +2,13 @@ using System;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
+using Unity.Netcode;
 
 namespace FPShooter
 {
-    public class PlayerMotor : MonoBehaviour
+    public class PlayerMotor : NetworkBehaviour
     {
+        private NetworkVariable<Vector3> _networkPosition = new NetworkVariable<Vector3>();
         private CharacterController _controller;
         private Vector3 _playerVelocity;
         private bool _isGrouned;
@@ -24,6 +26,9 @@ namespace FPShooter
 
         private void Update()
         {
+            if (!IsOwner) {
+                transform.position = _networkPosition.Value;
+            }
             _isGrouned = _controller.isGrounded;
             if (_lerpCrouch) {
                 _crouchTimer += Time.deltaTime;
@@ -46,6 +51,7 @@ namespace FPShooter
         //this method receives inputs from our InputManager and apply them to character controller
         public void ProcessMove(Vector2 input)
         {
+            if (!IsOwner) return;
             Vector3 moveDirection = Vector3.zero;
             moveDirection.x = input.x;
             moveDirection.z = input.y;
@@ -63,6 +69,7 @@ namespace FPShooter
 
         public void Jump()
         {
+            if (!IsOwner) return;
             if (_isGrouned) {
                 _playerVelocity.y = (float)Math.Sqrt(jumpHeight * -jumpHeight * _gravity);
             }
@@ -70,6 +77,7 @@ namespace FPShooter
 
         public void Crouch()
         {
+            if (!IsOwner) return;
             _crouching = !_crouching;
             _crouchTimer = 0f;
             _lerpCrouch = true;
@@ -77,6 +85,7 @@ namespace FPShooter
 
         public void Sprint()
         {
+            if (!IsOwner) return;
             _sprinting = !_sprinting;
             if (_sprinting) {
                 speed = 8f;
