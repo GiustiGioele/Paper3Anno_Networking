@@ -34,7 +34,7 @@ namespace FPShooter
 
         private void PlayerInteractRay()
         {
-            _playerUI.UpdateText(string.Empty, String.Empty);
+            // _playerUI.UpdateText(string.Empty, String.Empty);
 
             var ray = new Ray(_cam.transform.position, _cam.transform.forward);
             Debug.DrawRay(ray.origin, ray.direction * distance, Color.magenta);
@@ -43,7 +43,7 @@ namespace FPShooter
             if (Physics.Raycast(ray.origin, ray.direction, out raycastHit, distance)) {
                 if (raycastHit.collider.GetComponent<Interactable>() != null) {
                     Interactable interactable = raycastHit.collider.GetComponent<Interactable>();
-                    _playerUI.UpdateText(interactable.promptMessage, null);
+                    // _playerUI.UpdateText(interactable.promptMessage, null);
                     if (_inputManager._playerMovementsActions.Interact.triggered) {
                         interactable.InvokeDamage();
                         Debug.Log("OnDamage");

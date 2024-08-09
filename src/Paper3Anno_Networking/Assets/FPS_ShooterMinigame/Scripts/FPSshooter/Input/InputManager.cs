@@ -27,20 +27,20 @@ namespace FPShooter
 
         private void FixedUpdate()
         {
-            if (!IsOwner) return;
+            if (IsClient && IsOwner) return;
             //tell the player to move using the value from our movement action
             _motor.ProcessMove(_playerMovementsActions.Movement.ReadValue<Vector2>());
         }
 
         private void LateUpdate()
         {
-            if (!IsOwner) return;
+            if (IsClient && IsOwner) return;
             _look.ProcessLook(_playerMovementsActions.Look.ReadValue<Vector2>());
         }
 
         private void OnEnable()
         {
-            if (IsOwner)
+            if (IsClient && IsOwner)
             {
                 _playerMovementsActions.Enable();
             }
@@ -48,7 +48,7 @@ namespace FPShooter
 
         private void OnDisable()
         {
-            if (IsOwner)
+            if (IsClient && IsOwner)
             {
                 _playerMovementsActions.Disable();
             }

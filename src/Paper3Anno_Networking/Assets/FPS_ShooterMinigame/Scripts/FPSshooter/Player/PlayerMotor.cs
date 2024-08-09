@@ -26,7 +26,7 @@ namespace FPShooter
 
         private void Update()
         {
-            if (!IsOwner) {
+            if (IsClient && IsOwner) {
                 transform.position = _networkPosition.Value;
             }
             _isGrouned = _controller.isGrounded;
@@ -51,7 +51,7 @@ namespace FPShooter
         //this method receives inputs from our InputManager and apply them to character controller
         public void ProcessMove(Vector2 input)
         {
-            if (!IsOwner) return;
+            if (IsClient && IsOwner) return;
             Vector3 moveDirection = Vector3.zero;
             moveDirection.x = input.x;
             moveDirection.z = input.y;
@@ -69,7 +69,7 @@ namespace FPShooter
 
         public void Jump()
         {
-            if (!IsOwner) return;
+            if (IsClient && IsOwner) return;
             if (_isGrouned) {
                 _playerVelocity.y = (float)Math.Sqrt(jumpHeight * -jumpHeight * _gravity);
             }
@@ -77,7 +77,7 @@ namespace FPShooter
 
         public void Crouch()
         {
-            if (!IsOwner) return;
+            if (IsClient && IsOwner) return;
             _crouching = !_crouching;
             _crouchTimer = 0f;
             _lerpCrouch = true;
@@ -85,7 +85,7 @@ namespace FPShooter
 
         public void Sprint()
         {
-            if (!IsOwner) return;
+            if (IsClient && IsOwner) return;
             _sprinting = !_sprinting;
             if (_sprinting) {
                 speed = 8f;
